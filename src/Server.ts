@@ -1,30 +1,35 @@
-import  express  from "express";
-// import createConnection  from 'typeorm';
-// import pg from 'pg';
-var pg = require('pg');
-var conString = "postgres://nkunzi:sap123@localhost:5432/my_products";
+import express from 'express';
+// import bodyParser from 'body-parser';
+// import router from "./routes/storeRouter";
+import dbconfig from "./dbconfig/dbconfig";
+let pg = require('pg');
 
-var client = new pg.Client(conString);
+
+let client = new pg.Client(dbconfig);
 client.connect();
 
 
+
 const app = express()
-const port = process.env.PORT || 4001;
+const port = process.env.PORT || 4002;
 
 
 const startServer = async () =>{
     try {
-      const data = await client.query('select * from shoes;')
+      const data = await client.query('SELECT * FROM shoes;');
       console.log('Here', data);
       
     } catch (error) {
-        throw new Error('Unable to connect to postgres database...')
-        
+        throw new Error('Unable to connect to postgres database...'); 
     }
     app.listen(port, () => console.log(`Server started at: http://localhost:${port}`))
 };
 
 startServer();
+
+
+
+
 
 
 
