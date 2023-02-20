@@ -9,11 +9,11 @@ let pg = require('pg');
 let client = new pg.Client(dbconfig_1.default);
 client.connect();
 const app = (0, express_1.default)();
-const port = process.env.PORT || 4002;
+const port = process.env.PORT || 4003;
 const startServer = async () => {
     try {
         const data = await client.query('SELECT * FROM shoes;');
-        console.log('Here', data);
+        console.log('Here is the:', data);
     }
     catch (error) {
         throw new Error('Unable to connect to postgres database...');

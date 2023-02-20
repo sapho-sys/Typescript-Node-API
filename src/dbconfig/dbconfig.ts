@@ -1,5 +1,5 @@
 let pg = require('pg');
-
+// this my connection string to Postgres Database
 export default new pg.Client({
     max: 20,
     connectionString: "postgres://nkunzi:sap123@localhost:5432/my_products",

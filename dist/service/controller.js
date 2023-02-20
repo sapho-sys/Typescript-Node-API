@@ -5,15 +5,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const dbconfig_1 = __importDefault(require("../dbconfig/dbconfig"));
 class storesController {
-    async get(res) {
+    async Fetch(res) {
         try {
-            const client = await dbconfig_1.default.connect();
+            let client = await dbconfig_1.default.connect();
             const sql = "SELECT * FROM shoes;";
             const { rows } = await client.query(sql);
             const todos = rows;
             console.log("Here", todos);
             client.release();
-            res.send(todos);
+            res.send(`<p>${todos}</p>`);
         }
         catch (error) {
             res.status(400).send(error);

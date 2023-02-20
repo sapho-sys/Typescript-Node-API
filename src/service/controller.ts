@@ -3,21 +3,22 @@ import {Response} from 'express';
 
 class storesController {
 
-    public async get(res:Response) {
+    public async Fetch( res: Response ) {
         try {
-            const client = await pool.connect();
+            let  client = await pool.connect();
             const sql = "SELECT * FROM shoes;";
-            const { rows } = await client.query(sql);
+            const  {rows}  = await client.query(sql);
             const todos = rows;
             console.log("Here", todos)
-
+            //release memory load
             client.release();
 
-            res.send(todos);
+            res.send(`<p>${todos}</p>`);
         } catch (error) {
             res.status(400).send(error);
         }
     }
+    
    
 }
 
