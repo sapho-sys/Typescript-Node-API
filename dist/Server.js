@@ -13,7 +13,7 @@ const port = process.env.PORT || 4003;
 const startServer = async () => {
     try {
         const data = await client.query('SELECT * FROM shoes;');
-        console.log('Here is the:', data);
+        console.log('Here is the:', data.rows);
     }
     catch (error) {
         throw new Error('Unable to connect to postgres database...');

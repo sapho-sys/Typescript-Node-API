@@ -21,8 +21,7 @@ const startServer = async () =>{
 
       // const data = controller.Fetch;
       const data = await client.query('SELECT * FROM shoes;');
-      console.log('Here is the:', data);
-      
+      console.log('Here is the:', data.rows); 
     } catch (error) {
         throw new Error('Unable to connect to postgres database...'); 
     }
