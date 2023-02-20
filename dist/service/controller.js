@@ -11,7 +11,7 @@ class storesController {
             const sql = "SELECT * FROM shoes;";
             const { rows } = await client.query(sql);
             const todos = rows;
-            console.log("Here", todos);
+            console.log("Here is the", todos);
             client.release();
             res.send(`<p>${todos}</p>`);
         }
