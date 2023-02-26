@@ -21,6 +21,7 @@ class Server {
         dbconfig.connect(()=> {
           try {
             console.log('Connected');
+
           } catch (error) {
             console.log('Sorry we cannot connect to Database:', error) 
           }
@@ -29,7 +30,7 @@ class Server {
     }
 
     private routerConfig() {
-        this.app.use('/products', router);
+        this.app.use('/', router);
     }
 
     public start = (port: number) => {

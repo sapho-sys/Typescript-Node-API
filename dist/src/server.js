@@ -36,7 +36,7 @@ class Server {
         });
     }
     routerConfig() {
-        this.app.use('/products', storeRouter_1.default);
+        this.app.use('/', storeRouter_1.default);
     }
 }
 exports.default = Server;

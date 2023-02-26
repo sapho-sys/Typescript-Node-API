@@ -18,10 +18,9 @@ class ProductController {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const client = yield dbconfig_1.default.connect();
-                const sql = "SELECT * FROM shoes";
+                const sql = "SELECT * FROM shoes WHERE in_stock > 0";
                 const { rows } = yield client.query(sql);
                 const todos = rows;
-                // console.log('Here is my data', todos.rows);
                 client.release();
                 res.send(todos);
             }

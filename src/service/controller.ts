@@ -1,15 +1,14 @@
-import pool from '../dbconfig/dbconfig';
+import pg from '../dbconfig/dbconfig';
 
 class ProductController {
 
     public async get(req, res) {
         try {
-            const client = await pool.connect();
+            const client = await pg.connect();
 
-            const sql = "SELECT * FROM shoes";
+            const sql = "SELECT * FROM shoes WHERE in_stock > 0";
             const { rows } = await client.query(sql);
             const todos = rows;
-            // console.log('Here is my data', todos.rows);
             
 
             client.release();
