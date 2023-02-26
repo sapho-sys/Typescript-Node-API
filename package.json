@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/sapho-sys/Typescript-Node-API#readme",
   "dependencies": {
-    "body-parser": "^1.20.2"
+    "body-parser": "^1.20.2",
+    "node": "^19.6.1"
   }
 }
