@@ -21,6 +21,7 @@ class ProductController {
                 const sql = "SELECT * FROM shoes";
                 const { rows } = yield client.query(sql);
                 const todos = rows;
+                // console.log('Here is my data', todos.rows);
                 client.release();
                 res.send(todos);
             }

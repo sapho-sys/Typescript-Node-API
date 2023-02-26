@@ -1,6 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import storeRouter from './routes/storeRouter';
+import router from './routes/storeRouter';
 import dbconfig from "./dbconfig/dbconfig";
 class Server {
     private app;
@@ -29,7 +29,7 @@ class Server {
     }
 
     private routerConfig() {
-        this.app.use('/products', storeRouter);
+        this.app.use('/products', router);
     }
 
     public start = (port: number) => {

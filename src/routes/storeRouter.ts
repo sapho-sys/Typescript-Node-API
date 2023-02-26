@@ -1,10 +1,10 @@
 // import { Router } from 'express';
 import express, { Router } from 'express';
-import ProductController from '../service/controller';
+import controller from '../service/controller';
 
 const router = Router();
-const shoeController = new ProductController();
+const shoeController = new controller();
 
-router.get('/proudcts', shoeController.get);
+router.get('/products/', shoeController.get);
 
 export default router;

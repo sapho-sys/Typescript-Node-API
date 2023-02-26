@@ -9,6 +9,8 @@ class ProductController {
             const sql = "SELECT * FROM shoes";
             const { rows } = await client.query(sql);
             const todos = rows;
+            // console.log('Here is my data', todos.rows);
+            
 
             client.release();
 

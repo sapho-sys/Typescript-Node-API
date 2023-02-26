@@ -8,6 +8,6 @@ const express_1 = require("express");
 const controller_1 = __importDefault(require("../service/controller"));
 const router = (0, express_1.Router)();
 const shoeController = new controller_1.default();
-router.get('/proudcts', shoeController.get);
+router.get('/products/', shoeController.get);
 exports.default = router;
 //# sourceMappingURL=storeRouter.js.map
