@@ -1,37 +1,47 @@
 import express from 'express';
-// import bodyParser from 'body-parser';
-// import router from "./routes/storeRouter";
-// import storesController from './service/controller';
+import bodyParser from 'body-parser';
+import storeRouter from './routes/storeRouter';
 import dbconfig from "./dbconfig/dbconfig";
-let pg = require('pg');
+class Server {
+    private app;
 
-
-let client = new pg.Client(dbconfig);
-client.connect();
-
-
-
-const app = express()
-const port = process.env.PORT || 4003;
-
-
-const startServer = async () =>{
-  // const controller = new storesController()
-    try {
-
-      // const data = controller.Fetch;
-      const data = await client.query('SELECT * FROM shoes;');
-      console.log('Here is the:', data.rows); 
-    } catch (error) {
-        throw new Error('Unable to connect to postgres database...'); 
+    constructor() {
+        this.app = express();
+        this.config();
+        this.routerConfig();
+        this.dbConnect();
     }
-    app.listen(port, () => console.log(`Server started at: http://localhost:${port}`))
-};
 
-startServer();
+    private config() {
+        this.app.use(bodyParser.urlencoded({ extended:true }));
+        this.app.use(bodyParser.json({ limit: '1mb' })); // 100kb default
+    }
 
+    private dbConnect() {
+        dbconfig.connect(()=> {
+          try {
+            console.log('Connected');
+          } catch (error) {
+            console.log('Sorry we cannot connect to Database:', error) 
+          }
+           
+          }); 
+    }
 
+    private routerConfig() {
+        this.app.use('/products', storeRouter);
+    }
 
+    public start = (port: number) => {
+        return new Promise((resolve, reject) => {
+            this.app.listen(port, () => {
+                resolve(port);
+            }).on('error', (err: Object) => reject(err));
+        });
+    }
+}
+
+export default Server;
 
 
 
