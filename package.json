@@ -5,7 +5,7 @@
   "main": "dist/src/App.js",
   "scripts": {
     "build": "tsc",
-    "start": "tsc && node dist/App.js",
+    "start": "tsc && node dist/src/App.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
