@@ -1,4 +1,3 @@
-// import { Router } from 'express';
 import express, { Router } from 'express';
 import controller from '../service/controller';
 
