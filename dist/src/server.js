@@ -7,6 +7,7 @@ const express_1 = __importDefault(require("express"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const storeRouter_1 = __importDefault(require("./routes/storeRouter"));
 const dbconfig_1 = __importDefault(require("./dbconfig/dbconfig"));
+// import { findBrand } from './service/controller';
 class Server {
     constructor() {
         this.start = (port) => {
@@ -37,6 +38,7 @@ class Server {
     }
     routerConfig() {
         this.app.use('/', storeRouter_1.default);
+        this.app.use(`/brand`, storeRouter_1.default);
     }
 }
 exports.default = Server;

@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import router from './routes/storeRouter';
 import dbconfig from "./dbconfig/dbconfig";
+// import { findBrand } from './service/controller';
 class Server {
     private app;
 
@@ -31,6 +32,7 @@ class Server {
 
     private routerConfig() {
         this.app.use('/', router);
+        this.app.use(`/brand`,router);
     }
 
     public start = (port: number) => {
