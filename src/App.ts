@@ -1,6 +1,6 @@
 import server from './server'
 
-const port = parseInt(process.env.PORT || '4002');
+const port = parseInt(process.env.PORT || '4008');
 
 const starter = new server().start(port)
   .then(port => console.log(`Running on port ${port}`))

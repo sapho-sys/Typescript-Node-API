@@ -32,7 +32,7 @@ class storeAPI {
     getBrand(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const { shoeBrand } = req.params;
+                const shoeBrand = req.params.shoeBrand;
                 const data = yield (0, controller_2.findBrand)(shoeBrand);
                 res.json({
                     status: "success",

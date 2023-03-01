@@ -25,9 +25,14 @@ const findAll = () => __awaiter(void 0, void 0, void 0, function* () {
 exports.findAll = findAll;
 //find all shoe brands in my Database
 const findBrand = (brand) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = (yield Client).query(`SELECT * FROM shoes WHERE
-     brand = $1 AND in_stock > 0`, [brand]);
-    return result ? result : [];
+    try {
+        const results = (yield Client).query(`SELECT * FROM shoes WHERE
+     brand = $1`, [brand]);
+        return results;
+    }
+    catch (error) {
+        console.log('Here is the issue', error);
+    }
 });
 exports.findBrand = findBrand;
 //# sourceMappingURL=controller.js.map

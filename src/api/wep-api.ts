@@ -20,7 +20,7 @@ class storeAPI {
 
     public async getBrand(req, res){
         try {
-            const {shoeBrand} = req.params;
+            const shoeBrand: string = req.params.shoeBrand;
             const data = await findBrand(shoeBrand);
             res.json({
                 status: "success",
