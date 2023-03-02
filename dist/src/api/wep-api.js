@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const controller_1 = require("../service/controller");
 const controller_2 = require("../service/controller");
+const controller_3 = require("../service/controller");
 // import express from "express";
 class storeAPI {
     get(req, res) {
@@ -35,7 +36,26 @@ class storeAPI {
             try {
                 const shoeBrand = req.params;
                 const data = yield (0, controller_2.findBrand)(shoeBrand.brand)
-                    .then(res => res);
+                    .then(res => res.rows);
+                res.json({
+                    status: "success",
+                    data
+                });
+            }
+            catch (error) {
+                res.json({
+                    status: "error",
+                    error: error.stack
+                });
+            }
+        });
+    }
+    getColor(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const shoeColor = req.params;
+                const data = yield (0, controller_3.findColor)(shoeColor.color)
+                    .then(res => res.rows);
                 res.json({
                     status: "success",
                     data

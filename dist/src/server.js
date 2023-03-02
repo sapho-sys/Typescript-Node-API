@@ -41,6 +41,7 @@ class Server {
     routerConfig() {
         this.app.use('/', storeRouter_1.default);
         this.app.use('/:brand', storeRouter_1.default);
+        this.app.use('/:color', storeRouter_1.default);
     }
 }
 exports.default = Server;

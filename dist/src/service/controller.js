@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findBrand = exports.findAll = void 0;
+exports.findColor = exports.findBrand = exports.findAll = void 0;
 const dbconfig_1 = __importDefault(require("../dbconfig/dbconfig"));
 const Client = dbconfig_1.default.connect();
 ;
@@ -23,7 +23,7 @@ const findAll = () => __awaiter(void 0, void 0, void 0, function* () {
     return result ? result : [];
 });
 exports.findAll = findAll;
-//find all shoe brands in my Database
+//find specific shoe brands in my Database
 const findBrand = (brand) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const result = (yield Client).query(`SELECT * from shoes WHERE brand = $1`, [brand]);
@@ -34,4 +34,16 @@ const findBrand = (brand) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.findBrand = findBrand;
+//find specific color of shoes in my Database
+const findColor = (color) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        console.log("COLOR =>", color);
+        const result = (yield Client).query(`SELECT * FROM shoes WHERE color = $1`, [color]);
+        return result ? result : [];
+    }
+    catch (error) {
+        console.log('Here is the issue', error);
+    }
+});
+exports.findColor = findColor;
 //# sourceMappingURL=controller.js.map

@@ -9,5 +9,6 @@ const router = (0, express_1.Router)();
 const shoeController = new wep_api_1.default();
 router.get('/', shoeController.get);
 router.get('/:brand', shoeController.getBrand);
+router.get('/:color', shoeController.getColor);
 exports.default = router;
 //# sourceMappingURL=storeRouter.js.map

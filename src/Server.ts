@@ -35,6 +35,7 @@ class Server {
     private routerConfig() {
         this.app.use('/', router);
         this.app.use('/:brand',router);
+        this.app.use('/:color',router);
     }
 
     public start = (port: number) => {
