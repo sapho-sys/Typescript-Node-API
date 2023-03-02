@@ -1,5 +1,6 @@
 import { findAll } from "../service/controller";
 import { findBrand } from "../service/controller";
+// import express from "express";
 
 class storeAPI {
     public async get(req, res){
@@ -20,8 +21,9 @@ class storeAPI {
 
     public async getBrand(req, res){
         try {
-            const shoeBrand: string = req.params.shoeBrand;
-            const data = await findBrand(shoeBrand);
+            const shoeBrand =req.params;
+            const data = await findBrand(shoeBrand.brand)
+            .then(res => res)
             res.json({
                 status: "success",
                 data

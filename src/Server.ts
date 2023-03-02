@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import router from './routes/storeRouter';
 import dbconfig from "./dbconfig/dbconfig";
+import cors from "cors"
 // import { findBrand } from './service/controller';
 class Server {
     private app;
@@ -16,12 +17,13 @@ class Server {
     private config() {
         this.app.use(bodyParser.urlencoded({ extended:true }));
         this.app.use(bodyParser.json({ limit: '1mb' })); // 100kb default
+        this.app.use(cors())
     }
 
     private dbConnect() {
         dbconfig.connect(()=> {
           try {
-            console.log('Connected');
+            console.log('Connected to Postgres Database...');
 
           } catch (error) {
             console.log('Sorry we cannot connect to Database:', error) 
@@ -32,7 +34,7 @@ class Server {
 
     private routerConfig() {
         this.app.use('/', router);
-        this.app.use(`/:brand`,router);
+        this.app.use('/:brand',router);
     }
 
     public start = (port: number) => {

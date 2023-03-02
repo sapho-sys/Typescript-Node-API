@@ -26,9 +26,8 @@ exports.findAll = findAll;
 //find all shoe brands in my Database
 const findBrand = (brand) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const results = (yield Client).query(`SELECT * FROM shoes WHERE
-     brand in $1`, [brand]);
-        return results;
+        const result = (yield Client).query(`SELECT * from shoes WHERE brand = $1`, [brand]);
+        return result ? result : [];
     }
     catch (error) {
         console.log('Here is the issue', error);

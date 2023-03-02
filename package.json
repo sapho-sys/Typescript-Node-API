@@ -20,8 +20,11 @@
   },
   "homepage": "https://github.com/sapho-sys/Typescript-Node-API#readme",
   "dependencies": {
+    "@types/cors": "^2.8.13",
     "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
     "node": "^19.6.1",
+    "parse-string": "^1.2.5",
     "pg": "^8.9.0"
   },
   "devDependencies": {
