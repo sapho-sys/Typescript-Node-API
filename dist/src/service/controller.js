@@ -27,7 +27,7 @@ exports.findAll = findAll;
 const findBrand = (brand) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const results = (yield Client).query(`SELECT * FROM shoes WHERE
-     brand = $1`, [brand]);
+     brand in $1`, [brand]);
         return results;
     }
     catch (error) {

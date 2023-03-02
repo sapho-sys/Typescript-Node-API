@@ -21,9 +21,9 @@ export const findAll = async ():Promise<any> => {
 //find all shoe brands in my Database
 export const findBrand = async (brand:string):Promise<any> =>{
     try {
-        const results = (await Client).query(`SELECT * FROM shoes WHERE
+        const result = (await Client).query(`SELECT * FROM shoes WHERE
      brand = $1`, [brand]);
-     return results;
+     return result ? result : [] ;
     } catch (error) {
         console.log('Here is the issue', error)
     }
