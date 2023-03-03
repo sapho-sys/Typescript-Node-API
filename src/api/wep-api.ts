@@ -1,10 +1,11 @@
 import { findAll } from "../service/controller";
 import { findBrand } from "../service/controller";
 import {findColor} from "../service/controller"
+import {findSize} from "../service/controller"
 // import express from "express";
 
 class storeAPI {
-    public async get(req, res){
+    public async getAll(req, res){
         try {
             const data = await findAll();
             res.json({
@@ -58,6 +59,26 @@ class storeAPI {
         }
    
     }
+
+    public async getSize(req, res){
+        try {
+            let shoeSize = req.params;
+            const data = await findSize(shoeSize.size)
+            .then(res => res.rows)
+            res.json({
+                status: "error",
+                data
+            })  
+        } catch (error) {
+            res.json({
+                status: "error",
+                error: error.stack
+            })
+        }
+       
+    }
+
+    
 
 }
 

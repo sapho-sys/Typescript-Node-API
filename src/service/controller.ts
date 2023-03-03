@@ -34,14 +34,22 @@ export const findBrand = async (brand:string):Promise<any> =>{
 export const findColor = async (color:string):Promise<any> =>{
     try {
         console.log("COLOR =>", color);
-        
         const result = (await Client).query(`SELECT * FROM shoes WHERE color = $1`, [color]);
         return result ? result : [];
     } catch (error) {
         console.log('Here is the issue', error);
-        
     }
 
+}
+
+// find specific size of shoes in my Database
+export const findSize = async (size:string):Promise<any> =>{
+    try {
+        const result = (await Client).query('SELECT * FROM shoes WHERE size = $1', [size]);
+        return result ? result : [];  
+    } catch (error) {
+        console.log('Here is the issue', error);
+    }
 }
 
 

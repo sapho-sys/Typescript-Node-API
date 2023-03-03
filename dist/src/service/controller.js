@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findColor = exports.findBrand = exports.findAll = void 0;
+exports.findSize = exports.findColor = exports.findBrand = exports.findAll = void 0;
 const dbconfig_1 = __importDefault(require("../dbconfig/dbconfig"));
 const Client = dbconfig_1.default.connect();
 ;
@@ -46,4 +46,15 @@ const findColor = (color) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.findColor = findColor;
+// find specific size of shoes in my Database
+const findSize = (size) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const result = (yield Client).query('SELECT * FROM shoes WHERE size = $1', [size]);
+        return result ? result : [];
+    }
+    catch (error) {
+        console.log('Here is the issue', error);
+    }
+});
+exports.findSize = findSize;
 //# sourceMappingURL=controller.js.map

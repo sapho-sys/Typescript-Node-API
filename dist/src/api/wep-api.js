@@ -12,9 +12,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const controller_1 = require("../service/controller");
 const controller_2 = require("../service/controller");
 const controller_3 = require("../service/controller");
+const controller_4 = require("../service/controller");
 // import express from "express";
 class storeAPI {
-    get(req, res) {
+    getAll(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const data = yield (0, controller_1.findAll)();
@@ -58,6 +59,25 @@ class storeAPI {
                     .then(res => res.rows);
                 res.json({
                     status: "success",
+                    data
+                });
+            }
+            catch (error) {
+                res.json({
+                    status: "error",
+                    error: error.stack
+                });
+            }
+        });
+    }
+    getSize(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                let shoeSize = req.params;
+                const data = yield (0, controller_4.findSize)(shoeSize.size)
+                    .then(res => res.rows);
+                res.json({
+                    status: "error",
                     data
                 });
             }
