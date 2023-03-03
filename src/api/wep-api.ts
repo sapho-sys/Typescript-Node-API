@@ -22,7 +22,7 @@ class storeAPI {
 
     public async getBrand(req, res){
         try {
-            const shoeBrand = req.params;
+            let shoeBrand = req.params;
             const data = await findBrand(shoeBrand.brand)
             .then(res => res.rows)
             res.json({
@@ -41,7 +41,7 @@ class storeAPI {
 
     public async getColor(req, res){
         try {
-            const shoeColor = req.params;
+            let shoeColor = req.params;
             const data = await findColor(shoeColor.color)
             .then(res => res.rows)
             res.json({

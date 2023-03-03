@@ -34,7 +34,7 @@ class storeAPI {
     getBrand(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const shoeBrand = req.params;
+                let shoeBrand = req.params;
                 const data = yield (0, controller_2.findBrand)(shoeBrand.brand)
                     .then(res => res.rows);
                 res.json({
@@ -53,7 +53,7 @@ class storeAPI {
     getColor(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const shoeColor = req.params;
+                let shoeColor = req.params;
                 const data = yield (0, controller_3.findColor)(shoeColor.color)
                     .then(res => res.rows);
                 res.json({
