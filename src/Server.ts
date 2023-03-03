@@ -1,6 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import router from './routes/storeRouter';
+// import router2 from './routes/storeRouter2';
 import dbconfig from "./dbconfig/dbconfig";
 import cors from "cors"
 // import { findBrand } from './service/controller';
@@ -34,8 +35,10 @@ class Server {
 
     private routerConfig() {
         this.app.use('/', router);
-        this.app.use('/:brand',router);
-        this.app.use('/:color',router);
+        this.app.use('/brand/:brand',router);
+        this.app.use('/color/:color',router);
+        this.app.use('/size/:size', router);
+       
     }
 
     public start = (port: number) => {

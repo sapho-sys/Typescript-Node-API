@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const storeRouter_1 = __importDefault(require("./routes/storeRouter"));
+// import router2 from './routes/storeRouter2';
 const dbconfig_1 = __importDefault(require("./dbconfig/dbconfig"));
 const cors_1 = __importDefault(require("cors"));
 // import { findBrand } from './service/controller';
@@ -40,8 +41,9 @@ class Server {
     }
     routerConfig() {
         this.app.use('/', storeRouter_1.default);
-        this.app.use('/:brand', storeRouter_1.default);
-        this.app.use('/:color', storeRouter_1.default);
+        this.app.use('/brand/:brand', storeRouter_1.default);
+        this.app.use('/color/:color', storeRouter_1.default);
+        this.app.use('/size/:size', storeRouter_1.default);
     }
 }
 exports.default = Server;

@@ -32,11 +32,12 @@ class storeAPI {
             }
         });
     }
-    getBrand(req, res) {
+    getColor(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                let shoeBrand = req.params;
-                const data = yield (0, controller_2.findBrand)(shoeBrand.brand)
+                let shoeColor = req.params;
+                console.log("COLOR =>", shoeColor);
+                const data = yield (0, controller_3.findColor)(shoeColor.color)
                     .then(res => res.rows);
                 res.json({
                     status: "success",
@@ -51,11 +52,12 @@ class storeAPI {
             }
         });
     }
-    getColor(req, res) {
+    getBrand(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                let shoeColor = req.params;
-                const data = yield (0, controller_3.findColor)(shoeColor.color)
+                let shoeBrand = req.params;
+                console.log("BRAND =>", shoeBrand);
+                const data = yield (0, controller_2.findBrand)(shoeBrand.brand)
                     .then(res => res.rows);
                 res.json({
                     status: "success",
@@ -74,6 +76,7 @@ class storeAPI {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 let shoeSize = req.params;
+                console.log("SIZE =>", shoeSize);
                 const data = yield (0, controller_4.findSize)(shoeSize.size)
                     .then(res => res.rows);
                 res.json({

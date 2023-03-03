@@ -5,11 +5,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const wep_api_1 = __importDefault(require("../api/wep-api"));
-const router = (0, express_1.Router)();
+const router2 = (0, express_1.Router)();
 const shoeController = new wep_api_1.default();
-router.get('/', shoeController.getAll);
-router.get('/brand/:brand', shoeController.getBrand);
-router.get('/color/:color', shoeController.getColor);
-router.get('/size/:size', shoeController.getSize);
-exports.default = router;
-//# sourceMappingURL=storeRouter.js.map
+router2.get('/:color', shoeController.getColor);
+router2.get('/:size', shoeController.getSize);
+exports.default = router2;
+//# sourceMappingURL=storeRouter2.js.map

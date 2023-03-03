@@ -18,6 +18,7 @@ export const findAll = async ():Promise<Object> => {
     const result = (await Client).query('SELECT * FROM shoes WHERE in_stock > 0');
     return result ? result : [];
 }
+
 //find specific shoe brands in my Database
 export const findBrand = async (brand:string):Promise<any> =>{
     try {
@@ -33,7 +34,6 @@ export const findBrand = async (brand:string):Promise<any> =>{
 //find specific color of shoes in my Database
 export const findColor = async (color:string):Promise<any> =>{
     try {
-        console.log("COLOR =>", color);
         const result = (await Client).query(`SELECT * FROM shoes WHERE color = $1`, [color]);
         return result ? result : [];
     } catch (error) {
@@ -41,6 +41,8 @@ export const findColor = async (color:string):Promise<any> =>{
     }
 
 }
+
+
 
 // find specific size of shoes in my Database
 export const findSize = async (size:string):Promise<any> =>{
@@ -51,5 +53,7 @@ export const findSize = async (size:string):Promise<any> =>{
         console.log('Here is the issue', error);
     }
 }
+
+
 
 

@@ -19,11 +19,34 @@ class storeAPI {
             })
             
         }
+        
+    }
+
+    public async getColor(req, res){
+        
+        try {
+            let shoeColor = req.params;
+            console.log("COLOR =>", shoeColor);
+            const data = await findColor(shoeColor.color)
+            .then(res => res.rows)
+            res.json({
+                status: "success",
+                data
+            })
+        } catch (error) {
+            res.json({
+                status: "error",
+                error: error.stack
+            })
+        }
+        
+
     }
 
     public async getBrand(req, res){
         try {
             let shoeBrand = req.params;
+            console.log("BRAND =>", shoeBrand);
             const data = await findBrand(shoeBrand.brand)
             .then(res => res.rows)
             res.json({
@@ -37,32 +60,16 @@ class storeAPI {
             })
             
         }
-       
+        
+    
     }
 
-    public async getColor(req, res){
-        try {
-            let shoeColor = req.params;
-            const data = await findColor(shoeColor.color)
-            .then(res => res.rows)
-            res.json({
-                status: "success",
-                data
-            })
-        } catch (error) {
-            res.json({
-                status: "error",
-                error: error.stack
-            })
-            
-            
-        }
    
-    }
 
     public async getSize(req, res){
         try {
             let shoeSize = req.params;
+            console.log("SIZE =>", shoeSize);
             const data = await findSize(shoeSize.size)
             .then(res => res.rows)
             res.json({
@@ -75,8 +82,10 @@ class storeAPI {
                 error: error.stack
             })
         }
-       
+        
+    
     }
+   
 
     
 

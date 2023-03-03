@@ -37,7 +37,6 @@ exports.findBrand = findBrand;
 //find specific color of shoes in my Database
 const findColor = (color) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        console.log("COLOR =>", color);
         const result = (yield Client).query(`SELECT * FROM shoes WHERE color = $1`, [color]);
         return result ? result : [];
     }
