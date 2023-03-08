@@ -1,7 +1,6 @@
 import express, { Router } from 'express';
 import storeAPI from '../api/wep-api';
  
-
 const router = Router();
 const shoeController = new storeAPI();
 
