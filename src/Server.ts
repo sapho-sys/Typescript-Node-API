@@ -1,10 +1,8 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import router from './routes/storeRouter';
-// import router2 from './routes/storeRouter2';
 import dbconfig from "./dbconfig/dbconfig";
 import cors from "cors"
-// import { findBrand } from './service/controller';
 class Server {
     private app;
 
