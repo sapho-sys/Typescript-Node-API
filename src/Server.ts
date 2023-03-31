@@ -38,6 +38,7 @@ class Server {
         this.app.use('/brand/:brand',router);
         this.app.use('/color/:color',router);
         this.app.use('/size/:size', router);
+        this.app.use('/shoes', router);
        
     }
 

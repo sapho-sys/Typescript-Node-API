@@ -27,8 +27,6 @@ export const findBrand = async (brand:string):Promise<any> =>{
     } catch (error) {
         console.log('Here is the issue', error)
     }
-
- 
 }
 
 //find specific color of shoes in my Database
@@ -39,7 +37,6 @@ export const findColor = async (color:string):Promise<any> =>{
     } catch (error) {
         console.log('Here is the issue', error);
     }
-
 }
 
 
@@ -53,6 +50,18 @@ export const findSize = async (size:string):Promise<any> =>{
         console.log('Here is the issue', error);
     }
 }
+
+
+//insert new shoe brand
+export const  insertBrand = async (brand:string, color: string, size:number, price:number):Promise<any> =>{
+    try {
+        const result = (await Client).query('INSERT INTO shoes (brand, color, size, price) VALUES ($1, $2, $3, $4)', [brand, color, size, price]);
+    } catch (error) {
+        console.log('Here is the issue', error);
+    }
+}
+
+
 
 
 

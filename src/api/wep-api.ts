@@ -2,6 +2,7 @@ import { findAll } from "../service/controller";
 import { findBrand } from "../service/controller";
 import {findColor} from "../service/controller"
 import {findSize} from "../service/controller"
+import { insertBrand } from "../service/controller";
 // import express from "express";
 
 class storeAPI {
@@ -73,7 +74,7 @@ class storeAPI {
             const data = await findSize(shoeSize.size)
             .then(res => res.rows)
             res.json({
-                status: "error",
+                status: "success",
                 data
             })  
         } catch (error) {
@@ -81,9 +82,24 @@ class storeAPI {
                 status: "error",
                 error: error.stack
             })
+        }  
+    }
+
+    public async addShoe(req, res){
+        try {
+            const {brand , color , size, price} = req.body
+            console.log("INSERT =>", brand, color, size, price );
+            const data = await insertBrand(brand, color,size, price);
+            res.json({
+                status: "success"
+            })
+        } catch (error) {
+            res.json({
+                status: "error",
+                error: error.stack
+            })
+            
         }
-        
-    
     }
    
 

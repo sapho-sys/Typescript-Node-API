@@ -11,5 +11,6 @@ router.get('/', shoeController.getAll);
 router.get('/brand/:brand', shoeController.getBrand);
 router.get('/color/:color', shoeController.getColor);
 router.get('/size/:size', shoeController.getSize);
+router.post('/shoes', shoeController.addShoe);
 exports.default = router;
 //# sourceMappingURL=storeRouter.js.map

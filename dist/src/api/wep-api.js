@@ -13,6 +13,7 @@ const controller_1 = require("../service/controller");
 const controller_2 = require("../service/controller");
 const controller_3 = require("../service/controller");
 const controller_4 = require("../service/controller");
+const controller_5 = require("../service/controller");
 // import express from "express";
 class storeAPI {
     getAll(req, res) {
@@ -80,8 +81,26 @@ class storeAPI {
                 const data = yield (0, controller_4.findSize)(shoeSize.size)
                     .then(res => res.rows);
                 res.json({
-                    status: "error",
+                    status: "success",
                     data
+                });
+            }
+            catch (error) {
+                res.json({
+                    status: "error",
+                    error: error.stack
+                });
+            }
+        });
+    }
+    addShoe(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { brand, color, size, price } = req.body;
+                console.log("INSERT =>", brand, color, size, price);
+                const data = yield (0, controller_5.insertBrand)(brand, color, size, price);
+                res.json({
+                    status: "success"
                 });
             }
             catch (error) {

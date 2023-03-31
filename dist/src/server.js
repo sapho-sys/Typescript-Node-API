@@ -44,6 +44,7 @@ class Server {
         this.app.use('/brand/:brand', storeRouter_1.default);
         this.app.use('/color/:color', storeRouter_1.default);
         this.app.use('/size/:size', storeRouter_1.default);
+        this.app.use('/shoes', storeRouter_1.default);
     }
 }
 exports.default = Server;
