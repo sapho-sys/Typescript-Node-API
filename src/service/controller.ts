@@ -42,7 +42,7 @@ export const findColor = async (color:string):Promise<any> =>{
 
 
 // find specific size of shoes in my Database
-export const findSize = async (size:string):Promise<any> =>{
+export const findSize = async (size:number):Promise<any> =>{
     try {
         const result = (await Client).query('SELECT * FROM shoes WHERE size = $1', [size]);
         return result ? result : [];  
