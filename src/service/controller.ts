@@ -38,9 +38,6 @@ export const findColor = async (color:string):Promise<any> =>{
         console.log('Here is the issue', error);
     }
 }
-
-
-
 // find specific size of shoes in my Database
 export const findSize = async (size:number):Promise<any> =>{
     try {
@@ -50,8 +47,6 @@ export const findSize = async (size:number):Promise<any> =>{
         console.log('Here is the issue', error);
     }
 }
-
-
 //insert new shoe brand
 export const  insertBrand = async (brand:string, color: string, size:number, price:number):Promise<any> =>{
     try {
